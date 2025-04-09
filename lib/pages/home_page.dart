@@ -1,10 +1,11 @@
+import 'package:beautysalon/pages/account_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState(); //создаем экземпляр класса
 }
 
 class _HomePageState extends State<HomePage> {
@@ -15,13 +16,25 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children:[ Text('signed in as:'+user.email!),
+          children: [
+          Text('signed in as:'+user.email!),
+            SizedBox(height: 20,),
+              MaterialButton(
+                onPressed: (){
+                FirebaseAuth.instance.signOut();
+              },
+                color: Colors.deepPurple,
+                child: Text('sign out'),
+          ),
+            SizedBox(height: 50,),
             MaterialButton(onPressed: (){
-              FirebaseAuth.instance.signOut();
+              //тут написать логику перехода на страницу аккаунта
+              Navigator.push(context, MaterialPageRoute(builder: (context) => AccountPage()));
             },
               color: Colors.deepPurple,
-              child: Text('sign out'),)
-          ],
+              child: Text("go to my account")
+            ),
+      ],
         ),
       ),
     );

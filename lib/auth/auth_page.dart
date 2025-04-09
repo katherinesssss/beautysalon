@@ -19,7 +19,9 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     if(showLoginPage){
-      return LoginPage(showRegisterPage: toggleScreen);
+      return LoginPage(showRegisterPage: toggleScreen);//вызываем противоположную
+      // , чтобы была возможность переключаться между виджетами "Вот функция toggleScreen, которую ты можешь
+      // вызывать (обычно при нажатии кнопки ‘Зарегистрироваться’), чтобы переключиться на страницу регистрации”.
     } else{
       return RegisterPage(showLoginPage: toggleScreen);
     }

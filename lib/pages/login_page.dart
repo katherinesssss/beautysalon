@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget{
-  final VoidCallback showRegisterPage;
+  final VoidCallback showRegisterPage; //VoidCallback используется, потому что виджету LoginPage нужно предоставить способ
+  // уведомить свой родительский виджет (в данном случае, _AuthPageState) о том, что
+  // пользователь хочет перейти на страницу регистрации.
   const LoginPage({Key? key,required this.showRegisterPage}) : super (key: key); //const позволяет использовать один и тот же экземпляр виджета, если его свойства не меняются
   @override
   State<LoginPage> createState()=>  _LoginPageState();
