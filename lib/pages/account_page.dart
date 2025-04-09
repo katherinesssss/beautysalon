@@ -9,11 +9,6 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: SafeArea(
-            child: Icon(Icons.account_circle)),
-      ),
-    );
+    return const Placeholder();
   }
 }

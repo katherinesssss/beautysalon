@@ -1,4 +1,5 @@
-import 'package:beautysalon/pages/account_page.dart';
+
+import 'package:beautysalon/pages/user_main_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 class HomePage extends StatefulWidget {
@@ -13,30 +14,38 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-          Text('signed in as:'+user.email!),
-            SizedBox(height: 20,),
-              MaterialButton(
-                onPressed: (){
-                FirebaseAuth.instance.signOut();
-              },
-                color: Colors.deepPurple,
-                child: Text('sign out'),
-          ),
-            SizedBox(height: 50,),
-            MaterialButton(onPressed: (){
-              //тут написать логику перехода на страницу аккаунта
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AccountPage()));
-            },
-              color: Colors.deepPurple,
-              child: Text("go to my account")
+      body:Container(decoration: BoxDecoration(gradient: LinearGradient(
+          colors: [Color.fromARGB(255, 95, 182, 232), Color.fromARGB(255, 102, 71, 213)],
+          stops: [0.2, 0.8]),
+      ),
+      child: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Text('signed in as:'+user.email!),
+              SizedBox(height: 20,),
+                MaterialButton(
+                  onPressed: (){
+                  FirebaseAuth.instance.signOut();
+                },
+                  highlightColor: Colors.purpleAccent,
+                  color: Colors.deepPurple,
+                  child: Text('sign out'),
             ),
-      ],
+              SizedBox(height: 50,),
+              MaterialButton(onPressed: (){
+                //тут написать логику перехода на страницу аккаунта
+                Navigator.push(context, MaterialPageRoute(builder: (context) => UserMainPage()));
+              }, highlightColor: Colors.purpleAccent,
+                color: Colors.deepPurple,
+                child: Text("go to my account")
+              ),
+        ],
+          ),
         ),
       ),
+    ),
     );
   }
 }
