@@ -1,3 +1,4 @@
+import 'package:beautysalon/pages/main_page.dart';
 import 'package:beautysalon/pages/sign_in_page.dart';
 import 'package:beautysalon/pages/sign_up_page.dart';
 import 'package:beautysalon/provider/theme_provider.dart';
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget{
           ChangeNotifierProvider(create: (context)=>ThemeProvider(),)
         ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: SignUpPage(),
+          body: MainPage(),
         ),
       ),
     );
