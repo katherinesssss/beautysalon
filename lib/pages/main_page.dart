@@ -24,7 +24,12 @@ class _MainPageState extends State<MainPage> {
         ),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart), color: Colors.black,)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset('lib/assets/addtocart.png',
+              height: 30,
+            ),
+          )
         ],
       ),
       bottomNavigationBar: BottomAppBar(
