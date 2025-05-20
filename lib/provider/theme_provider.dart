@@ -6,7 +6,7 @@ class ThemeProvider with ChangeNotifier{
   ThemeData _themeMode = light; //переменная типа ThemeData
 
   ThemeData get themeMode => _themeMode; //получаем извне значение переменной
-
+  bool get isDarkMode => _themeMode == dark;
   set themeMode (ThemeData themeMode){
     _themeMode = themeMode;
     notifyListeners();
