@@ -1,5 +1,6 @@
 import 'package:beautysalon/my_drawer.dart';
 import 'package:beautysalon/pages/main_page.dart';
+import 'package:beautysalon/pages/service_page.dart';
 import 'package:beautysalon/pages/settings_page.dart';
 import 'package:beautysalon/pages/sign_in_page.dart';
 import 'package:beautysalon/pages/sign_up_page.dart';
@@ -19,8 +20,20 @@ class MyApp extends StatelessWidget{
         ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        initialRoute: '/signin',
+        routes: {
+          '/signup': (context) => const SignUpPage(),
+          '/home': (context) => const MainPage(),
+          '/signin':(context)=>const SignInPage(),
+          '/settings':(context)=>const SettingsPage(),
+          '/logout':(context)=>const SignInPage(),
+          '/services':(context)=>const ServicePage(),
+          //'/cart':(context)=>const CartPage(),
+
+
+        },
         home: Scaffold(
-          body: MainPage(),
+          body: SignInPage(),
         ),
       ),
     );

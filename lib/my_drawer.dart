@@ -22,63 +22,66 @@ class MyDrawer extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          Container(
-            child: Padding(
-                padding: EdgeInsets.all(30),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Column(
-                  children: [
-                    Row(
+          Padding(
+              padding: EdgeInsets.all(30),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "HOME",
+                        style: TextStyle(
+                          fontFamily: 'Delius-Regular',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      IconButton(onPressed: (){
+                        Navigator.of(context,rootNavigator: true).pushNamed( '/home');
+                      }, icon: Icon(Icons.home))
+                    ],
+                  ),
+                  SizedBox(height: 30,),
+                  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "HOME",
-                          style: TextStyle(
+                    children: [
+                      Text("SETTINGS",
+                        style: TextStyle(
                             fontFamily: 'Delius-Regular',
                             fontSize: 20,
                             fontWeight: FontWeight.bold
-                          ),
                         ),
-                        IconButton(onPressed: (){}, icon: Icon(Icons.home))
-                      ],
+                      ),
+                      IconButton(onPressed: (){
+                        Navigator.of(context,rootNavigator: true).pushNamed( '/settings');
+                      }, icon: Icon(Icons.settings))
+                      ]
                     ),
-                    SizedBox(height: 30,),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  SizedBox(height: 250,),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("SETTINGS",
+                        Text("LOG OUT",
                           style: TextStyle(
                               fontFamily: 'Delius-Regular',
                               fontSize: 20,
                               fontWeight: FontWeight.bold
                           ),
                         ),
-                        IconButton(onPressed: (){}, icon: Icon(Icons.settings))
-                        ]
-                      ),
-                    SizedBox(height: 250,),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("LOG OUT",
-                            style: TextStyle(
-                                fontFamily: 'Delius-Regular',
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold
-                            ),
-                          ),
-                          IconButton(onPressed: (){}, icon: Icon(Icons.logout))
-                        ]
-                    ),
-                  ],
-                ),
-
-
-
+                        IconButton(onPressed: (){
+                          Navigator.of(context,rootNavigator: true).pushNamed( '/logout');
+                        }, icon: Icon(Icons.logout))
+                      ]
+                  ),
+                ],
               ),
-            ),
 
+
+
+            ),
           ),
           ],
       ),
