@@ -93,7 +93,9 @@ class _SignInPageState extends State<SignInPage> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
               child: GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  Navigator.pushNamed(context, '/home');
+                },
                 child: Container(
                   width: 130,
                   height: 50,
@@ -113,27 +115,32 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
             SizedBox(height: 40,),
-              RichText( //используем для разных стилей текста в одном предложении
-                  text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Not a member?',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontFamily: 'Delius-Regular',
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, '/signup');
+                },
+                child: RichText( //используем для разных стилей текста в одном предложении
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Not a member?',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: 'Delius-Regular',
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: ' Register now!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontFamily: 'Delius-Regular',
-                        ),
-                      )
-                    ]
-                  ),
+                        TextSpan(
+                          text: ' Register now!',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Delius-Regular',
+                          ),
+                        )
+                      ]
+                    ),
+                ),
               ),
           ],
         ),

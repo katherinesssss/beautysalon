@@ -1,4 +1,4 @@
-import 'package:beautysalon/my_drawer.dart';
+
 import 'package:beautysalon/pages/main_page.dart';
 import 'package:beautysalon/pages/service_page.dart';
 import 'package:beautysalon/pages/settings_page.dart';

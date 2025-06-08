@@ -101,11 +101,13 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             SizedBox(height: 40,),
-            //button sign in
+            //button sign up
             Container(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
               child: GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  Navigator.pushNamed(context, '/home');
+                },
                 child: Container(
                   width: 130,
                   height: 50,
@@ -125,26 +127,31 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             SizedBox(height: 20,),
-            RichText( //используем для разных стилей текста в одном предложении
-              text: TextSpan(
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Are you a member?',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontFamily: 'Delius-Regular',
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, '/signin');
+              },
+              child: RichText( //используем для разных стилей текста в одном предложении
+                text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Are you a member?',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontFamily: 'Delius-Regular',
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: ' Sign in there!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontFamily: 'Delius-Regular',
-                      ),
-                    )
-                  ]
+                      TextSpan(
+                        text: ' Sign in there!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontFamily: 'Delius-Regular',
+                        ),
+                      )
+                    ]
+                ),
               ),
             ),
           ],

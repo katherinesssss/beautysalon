@@ -14,6 +14,7 @@ class MyDrawer extends StatelessWidget {
               size: 60,
             ),
           ),
+
           Padding(padding: EdgeInsets.all(8),
             child: Divider(
               color: Colors.white,
