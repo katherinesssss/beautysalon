@@ -48,6 +48,9 @@ flutter_native_splash:
   android: true
   ios: true
   web: true
+  duration: 2000
+
+
 
 dev_dependencies:
   flutter_test:
@@ -76,7 +79,7 @@ flutter:
     - lib/assets/lotos.png
     - lib/assets/addtocart.png
     - lib/assets/picture/
-    #- images/a_dot_ham.jpeg
+    - lib/assets/procedure.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

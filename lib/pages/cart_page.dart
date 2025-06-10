@@ -1,32 +1,28 @@
-import 'package:beautysalon/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
-class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+class CartPage extends StatefulWidget {
+  const CartPage({super.key});
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
+  State<CartPage> createState() => _CartPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _CartPageState extends State<CartPage> {
   int? _currentIndex;
   final _isItemSelected = false;
   final List<String> routes = ['/home', '/services', '/back'];  // Теперь 3 элемента
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text("SETTINGS",
+          child: Text("CART",
             style: TextStyle(
               fontFamily: 'Delius-Regular'
             ),
           ),
         ),
-       backgroundColor: Colors.indigoAccent,
+      backgroundColor: Colors.indigoAccent,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex ?? 0,
@@ -59,35 +55,6 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
-        children: [
-          Container(
-            decoration:
-            BoxDecoration(color: Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            margin: const EdgeInsets.only(left: 25,top: 10,right: 25),
-            padding: const EdgeInsets.all(25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //dark mode
-                Text("Dark Mode",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontFamily: 'Delius-Regular'
-                ),
-                ),
-
-                //switch
-                CupertinoSwitch(
-                  value: context.watch<ThemeProvider>().isDarkMode,
-                  onChanged: (value) => context.read<ThemeProvider>().toggleTheme(),
-                )
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

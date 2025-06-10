@@ -53,48 +53,15 @@ class _ServicePageState extends State<ServicePage> {
               end: Alignment.bottomCenter,
             ),
           ),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.white10,
-                width: 2,
-              ),
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 50),
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                    ),
-                    child: Text(
-                      "Relax, Recharge, Repeat – Choose Your Spa Journey!",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                Expanded(
+          
+                child: Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 100),
+                    padding: const EdgeInsets.only(top: 50),
                     child: MyTabBar(),
                   ),
                 ),
-              ],
             ),
           ),
-        ),
-      ),
     );
   }
 }

@@ -66,7 +66,7 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
               BottomNavigationBarItem(label: "Services", icon: Icon(Icons.list_alt)),
             ],
-          backgroundColor: Colors.indigo,
+          backgroundColor: Colors.indigoAccent,
         ),
           body:  Container(
             decoration: BoxDecoration(
