@@ -56,6 +56,7 @@ class _MyTabBarState extends State<MyTabBar> {
                 tabs: proceduresByCategory.keys
                     .map((category) => Tab(text: category))
                     .toList(),
+                    labelColor: Colors.black,
               ),
               Expanded(
                 child: TabBarView(
@@ -72,13 +73,14 @@ class _MyTabBarState extends State<MyTabBar> {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        title: Text(procedures[index].title),
-                        subtitle: Text(procedures[index].description),
+                        title: Text(procedures[index].title,style: TextStyle(fontWeight: FontWeight.bold),),
+                        subtitle: Text(procedures[index].description,style: TextStyle(color: Colors.black),),
                         trailing: Text(
                           '\$${procedures[index].price}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
+                            color: Colors.black,
                           ),
                         ),
                       ),

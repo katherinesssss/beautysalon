@@ -17,16 +17,18 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode;
     return Scaffold(
       appBar: AppBar(
         title: Center(
           child: Text("SETTINGS",
             style: TextStyle(
-              fontFamily: 'Delius-Regular'
+              fontFamily: 'Delius-Regular',
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
-       backgroundColor: Colors.indigoAccent,
+       backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex ?? 0,
@@ -47,47 +49,58 @@ class _SettingsPageState extends State<SettingsPage> {
       }
 
         },
-        selectedItemColor: _isItemSelected ? Colors.grey : Colors.white,
-        unselectedItemColor: Colors.white,
+        selectedItemColor: _isItemSelected ? Theme.of(context).colorScheme.onPrimary  : Theme.of(context).colorScheme.inversePrimary,
+        unselectedItemColor: Theme.of(context).colorScheme.inversePrimary,
 
         items: [
           BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home),),
           BottomNavigationBarItem(label: "Services", icon: Icon(Icons.list_alt)),
           BottomNavigationBarItem(label: "Back", icon: Icon(Icons.arrow_back_ios_new))
         ],
-        backgroundColor: Colors.indigo,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       backgroundColor: Colors.lightBlueAccent,
-      body: Column(
-        children: [
-          Container(
-            decoration:
-            BoxDecoration(color: Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.circular(12),
+      body: Container(
+        decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: isDarkMode?[Colors.indigo, Colors.deepPurple, Colors.purple.shade200]:[Colors.lightBlueAccent, Colors.cyan, Colors.blueAccent.shade100] ,
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter
+              ),
             ),
-            margin: const EdgeInsets.only(left: 25,top: 10,right: 25),
-            padding: const EdgeInsets.all(25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //dark mode
-                Text("Dark Mode",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontFamily: 'Delius-Regular'
-                ),
-                ),
-
-                //switch
-                CupertinoSwitch(
-                  value: context.watch<ThemeProvider>().isDarkMode,
-                  onChanged: (value) => context.read<ThemeProvider>().toggleTheme(),
-                )
-              ],
+        child: Column(
+          
+          children: [
+            Container(
+              decoration:
+              BoxDecoration(color: Theme.of(context).colorScheme.secondary,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              margin: const EdgeInsets.only(left: 25,top: 30,right: 25),
+              padding: const EdgeInsets.all(25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //dark mode
+                  Text("Dark Mode",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontFamily: 'Delius-Regular'
+                  ),
+                  ),
+        
+                  //switch
+                  CupertinoSwitch(
+                    value: context.watch<ThemeProvider>().isDarkMode,
+                    onChanged: (value) => context.read<ThemeProvider>().toggleTheme(),
+                  )
+                ],
+              ),
+              
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

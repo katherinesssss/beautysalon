@@ -10,14 +10,17 @@ class MyDrawer extends StatelessWidget {
         children: [
           Padding(
               padding: EdgeInsets.only(top: 80),
-            child: Icon(Icons.lock_open,
+            child: IconButton(icon:Icon(Icons.lock_open,
               size: 60,
+              color: Theme.of(context).colorScheme.surface,
+            ),
+            onPressed: (){},
             ),
           ),
 
           Padding(padding: EdgeInsets.all(8),
             child: Divider(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.onPrimary,
             ),
           ),
           SizedBox(
@@ -37,12 +40,15 @@ class MyDrawer extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Delius-Regular',
                           fontSize: 20,
-                          fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       IconButton(onPressed: (){
                         Navigator.of(context,rootNavigator: true).pushNamed( '/home');
-                      }, icon: Icon(Icons.home))
+                      }, icon: Icon(Icons.home),
+                      color: Theme.of(context).colorScheme.surface,
+                      )
                     ],
                   ),
                   SizedBox(height: 30,),
@@ -53,12 +59,15 @@ class MyDrawer extends StatelessWidget {
                         style: TextStyle(
                             fontFamily: 'Delius-Regular',
                             fontSize: 20,
-                            fontWeight: FontWeight.bold
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       IconButton(onPressed: (){
                         Navigator.of(context,rootNavigator: true).pushNamed( '/settings');
-                      }, icon: Icon(Icons.settings))
+                      }, icon: Icon(Icons.settings),
+                      color: Theme.of(context).colorScheme.surface,
+                      )
                       ]
                     ),
                   SizedBox(height: 250,),
@@ -69,12 +78,15 @@ class MyDrawer extends StatelessWidget {
                           style: TextStyle(
                               fontFamily: 'Delius-Regular',
                               fontSize: 20,
-                              fontWeight: FontWeight.bold
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.surface,
                           ),
                         ),
                         IconButton(onPressed: (){
                           Navigator.of(context,rootNavigator: true).pushNamed( '/logout');
-                        }, icon: Icon(Icons.logout))
+                        }, icon: Icon(Icons.logout),
+                        color: Theme.of(context).colorScheme.surface,
+                        )
                       ]
                   ),
                 ],

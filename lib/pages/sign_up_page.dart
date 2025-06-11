@@ -33,16 +33,16 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
         child: Column(
           children: [
-            SizedBox(height: 40,),
+            SizedBox(height: 80,),
             Image.asset(
               'lib/assets/lotos.png',
               width: 100,
               height: 100,
             ),
-            SizedBox(height: 100,),
+            SizedBox(height: 160,),
             //email
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 90, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 60),
               child: TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -62,7 +62,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             //password
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 90,vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 60, vertical:20),
               child: TextField(
                 controller: passwordController,
                 decoration: InputDecoration(
@@ -82,7 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             //confirm password
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 90, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 60),
               child: TextField(
                 controller: confirmPasswordController,
                 decoration: InputDecoration(

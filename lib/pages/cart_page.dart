@@ -1,4 +1,6 @@
+import 'package:beautysalon/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -13,16 +15,20 @@ class _CartPageState extends State<CartPage> {
   final List<String> routes = ['/home', '/services', '/back'];  // Теперь 3 элемента
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode;
     return Scaffold(
       appBar: AppBar(
         title: Center(
           child: Text("CART",
             style: TextStyle(
-              fontFamily: 'Delius-Regular'
+              fontFamily: 'Delius-Regular',
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.surface,
             ),
           ),
         ),
-      backgroundColor: Colors.indigoAccent,
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex ?? 0,
@@ -43,18 +49,24 @@ class _CartPageState extends State<CartPage> {
       }
 
         },
-        selectedItemColor: _isItemSelected ? Colors.grey : Colors.white,
-        unselectedItemColor: Colors.white,
+        selectedItemColor: _isItemSelected ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.inversePrimary,
+        unselectedItemColor:  Theme.of(context).colorScheme.inversePrimary,
 
         items: [
           BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home),),
           BottomNavigationBarItem(label: "Services", icon: Icon(Icons.list_alt)),
           BottomNavigationBarItem(label: "Back", icon: Icon(Icons.arrow_back_ios_new))
         ],
-        backgroundColor: Colors.indigo,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      backgroundColor: Colors.lightBlueAccent,
-      body: Column(
+      body:  Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: isDarkMode?[Colors.indigo, Colors.deepPurple, Colors.purple.shade200]:[Colors.lightBlueAccent, Colors.cyan, Colors.blueAccent.shade100] ,
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter
+              ),
+            ),
       ),
     );
   }

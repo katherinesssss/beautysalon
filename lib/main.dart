@@ -18,9 +18,11 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (context)=>ThemeProvider(),)
+          ChangeNotifierProvider(create: (context)=>ThemeProvider()),
         ],
-      child: MaterialApp(
+        child: Consumer<ThemeProvider>(
+          builder: (context, themeProvider,child){
+            return MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/signin',
         routes: {
@@ -31,13 +33,12 @@ class MyApp extends StatelessWidget{
           '/logout':(context)=>const SignInPage(),
           '/services':(context)=>const ServicePage(),
           '/cart':(context)=>const CartPage(),
-
-
-        },
-        home: Scaffold(
-          body: SignInPage(),
-        ),
-      ),
+          },
+          home: const SignInPage(),
+          theme: themeProvider.themeMode,
+            );
+          },
+    ),
     );
   }
 }

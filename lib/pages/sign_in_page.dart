@@ -47,10 +47,10 @@ class _SignInPageState extends State<SignInPage> {
               "WELCOME BACK\n"
                   "  WE MISS YOU!",
             ),
-            SizedBox(height: 100,),
+            SizedBox(height: 120,),
             //email
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 90, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
               child: TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -70,7 +70,7 @@ class _SignInPageState extends State<SignInPage> {
             ),
             //password
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 90),
+              padding: EdgeInsets.symmetric(horizontal: 60),
               child: TextField(
                 controller: passwordController,
                 decoration: InputDecoration(
