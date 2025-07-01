@@ -21,7 +21,7 @@ class Procedure {
     'imageUrl': imageUrl,
   };
   //method from json
-  Procedure.fromJson(Map<String, dynamic> json)
+  Procedure.fromJson(Map<String, dynamic> json) //json-имя параметра
   : id=json['id'] as int,
   title=json['title'] as String,
   description=json['description'] as String,

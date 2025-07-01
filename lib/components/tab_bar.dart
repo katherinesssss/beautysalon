@@ -1,6 +1,6 @@
 import 'dart:convert';
-
 import 'package:beautysalon/components/procedure.dart';
+import 'package:beautysalon/pages/description_service_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,12 +22,12 @@ class _MyTabBarState extends State<MyTabBar> {
 
   Future<Map<String, List<Procedure>>> _loadProcedures() async {
     final jsonString = await rootBundle.loadString('lib/assets/procedure.json');
-    final Map<String, dynamic> jsonData = json.decode(jsonString);
-    final Map<String, List<Procedure>> proceduresByCategory = {};
+    final Map<String, dynamic> jsonData = json.decode(jsonString); //используем Map<String, dynamic> для сырых данных, сразу после декодирования
+    final Map<String, List<Procedure>> proceduresByCategory = {}; //Map<String, List<Procedure>> по идее аналогично Map<String, dynamic>
 
     jsonData.forEach((category, proceduresJson) {
       proceduresByCategory[category] = (proceduresJson as List)
-          .map((item) => Procedure.fromJson(item))
+          .map((item) => Procedure.fromJson(item)) //это метод из Procedure.dart
           .toList();
     });
 
@@ -63,7 +63,18 @@ class _MyTabBarState extends State<MyTabBar> {
                   children: proceduresByCategory.values.map((procedures) {
                     return ListView.builder(
                       itemCount: procedures.length,
-                      itemBuilder: (_, index) => ListTile(
+                      itemBuilder: (_, index) => InkWell(
+                        onTap: () {
+                            Navigator.push(
+                              context,
+                            MaterialPageRoute(
+                              builder: (context)=> DescriptionServicePage(
+                              procedure: procedures[index],
+                              ),
+                            ),
+                          );
+                        },
+                        child: ListTile(
                         leading: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Image.asset(
@@ -73,7 +84,7 @@ class _MyTabBarState extends State<MyTabBar> {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        title: Text(procedures[index].title,style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(procedures[index].title,style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
                         subtitle: Text(procedures[index].description,style: TextStyle(color: Colors.black),),
                         trailing: Text(
                           '\$${procedures[index].price}',
@@ -83,6 +94,7 @@ class _MyTabBarState extends State<MyTabBar> {
                             color: Colors.black,
                           ),
                         ),
+                      ),
                       ),
                     );
                   }).toList(),

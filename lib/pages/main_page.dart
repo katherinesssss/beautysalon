@@ -15,9 +15,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final isDarkMode = context.watch<ThemeProvider>().isDarkMode;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-        home: Scaffold(
+        return Scaffold(
         drawer: MyDrawer(),
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
@@ -91,7 +89,6 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
             ),
-        ),
     );
   }
 }

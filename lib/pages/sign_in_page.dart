@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:beautysalon/provider/theme_provider.dart';
+import 'package:provider/provider.dart';
+import '';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -19,14 +22,17 @@ class _SignInPageState extends State<SignInPage> {
   }
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode;
     return Material(
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.lightBlueAccent, Colors.cyan, Colors.blueAccent.shade100],
+            colors: isDarkMode
+                ? [Colors.indigo, Colors.deepPurple, Colors.purple.shade200]
+                : [Colors.lightBlueAccent, Colors.cyan, Colors.blueAccent.shade100],
             begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Column(

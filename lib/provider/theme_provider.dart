@@ -15,6 +15,7 @@ class ThemeProvider with ChangeNotifier{
     if (_themeMode==light)
       {
         themeMode = dark;
+        debugPrint('Тема изменена на: $_themeMode'); 
       }
     else {
       themeMode = light;

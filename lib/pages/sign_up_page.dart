@@ -1,4 +1,6 @@
+import 'package:beautysalon/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,14 +23,17 @@ class _SignUpPageState extends State<SignUpPage> {
   }
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode;
     return Material(
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.lightBlueAccent, Colors.cyan, Colors.blueAccent.shade100],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter
+            colors: isDarkMode
+                ? [Colors.indigo, Colors.deepPurple, Colors.purple.shade200]
+                : [Colors.lightBlueAccent, Colors.cyan, Colors.blueAccent.shade100],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Column(
