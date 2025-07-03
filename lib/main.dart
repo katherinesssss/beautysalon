@@ -5,6 +5,7 @@ import 'package:beautysalon/pages/service_page.dart';
 import 'package:beautysalon/pages/settings_page.dart';
 import 'package:beautysalon/pages/sign_in_page.dart';
 import 'package:beautysalon/pages/sign_up_page.dart';
+import 'package:beautysalon/provider/cart_provider.dart';
 import 'package:beautysalon/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget{
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context)=>ThemeProvider()),
+          ChangeNotifierProvider(create: (context)=>CartProvider()),
         ],
         child: Consumer<ThemeProvider>(
           builder: (context, themeProvider,child){

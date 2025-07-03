@@ -1,3 +1,5 @@
+
+import 'package:beautysalon/provider/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:beautysalon/components/procedure.dart';
@@ -60,28 +62,28 @@ class _DescriptionServicePageState extends State<DescriptionServicePage> {
                       const SizedBox(height: 16),
                       Text(
                         widget.procedure.title,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         '\$${widget.procedure.price}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       const SizedBox(height: 16),
                       Flexible(
                         child: Text(
                           widget.procedure.description,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.surface,
                           ),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 10, // Ограничение количества строк
@@ -142,7 +144,22 @@ class _DescriptionServicePageState extends State<DescriptionServicePage> {
                       ),
                       elevation: 8,
                     ),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      final cartProvider = context.read<CartProvider>();
+                      cartProvider.addToCart(widget.procedure, _quantity);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Center(
+                          child: Text('${widget.procedure.title} add to cart!',
+                          style: TextStyle(color: Theme.of(context).colorScheme.onPrimary,
+                          ),
+                          ),
+                        ),
+                        backgroundColor: Theme.of(context).colorScheme.secondary,
+                        duration: Duration(seconds: 1),
+                        ),
+                      );
+                      Navigator.pop(context);
+                    },
                     child: Text(
                       'Add to Cart',
                       style: TextStyle(
