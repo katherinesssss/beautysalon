@@ -1,4 +1,5 @@
 
+import 'package:beautysalon/components/user_provider.dart';
 import 'package:beautysalon/pages/cart_page.dart';
 import 'package:beautysalon/pages/main_page.dart';
 import 'package:beautysalon/pages/service_page.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget{
         providers: [
           ChangeNotifierProvider(create: (context)=>ThemeProvider()),
           ChangeNotifierProvider(create: (context)=>CartProvider()),
+          ChangeNotifierProvider(create: (_) => UserProvider()),
         ],
         child: Consumer<ThemeProvider>(
           builder: (context, themeProvider,child){
